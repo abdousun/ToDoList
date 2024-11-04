@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
+import ToDoList from './Component/ToDoList';
+import { ToDoContext } from './Contexts/ToDoContext';
+import { useState } from 'react';
+
+
+
+const initialTodos = [
+ 
+];
+
 
 function App() {
+  const [todos, setTodos] = useState(initialTodos);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center items-center min-h-screen bg-black">
+   <ToDoContext.Provider value={{todos, setTodos}}>
+    <ToDoList />
+   </ToDoContext.Provider>  
     </div>
   );
 }
